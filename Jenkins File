@@ -1,0 +1,33 @@
+pipeline {
+    agent any  // Fixed typo: 'anny' → 'any'
+
+    tools {
+        maven 'mymaven'
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/Saquib71/DevOpsCodeDemo.git'
+            }
+        }
+
+        stage('Compile Code') {  // Fixed stage name typo: 'compil code' → 'Compile Code'
+            steps {
+                sh 'mvn compile'
+            }
+        }
+
+        stage('Test Code') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Build Code') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}
